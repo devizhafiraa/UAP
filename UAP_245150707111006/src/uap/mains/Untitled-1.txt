@@ -1,0 +1,106 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class FormMahasiswa extends JFrame {
+    private JTextField namaField, ttlField, noDaftarField, noTelpField, emailField;
+    private JTextArea alamatArea;
+    private JButton submitButton;
+
+    public FormMahasiswa() {
+        setTitle("Formulir Mahasiswa");
+        setSize(400, 350);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(new Color(255, 230, 255));
+        setLayout(null);
+
+        JLabel namaLabel = new JLabel("Nama Lengkap");
+        namaLabel.setBounds(20, 20, 120, 25);
+        add(namaLabel);
+
+        namaField = new JTextField();
+        namaField.setBounds(150, 20, 200, 25);
+        add(namaField);
+
+        JLabel ttlLabel = new JLabel("Tanggal Lahir");
+        ttlLabel.setBounds(20, 50, 120, 25);
+        add(ttlLabel);
+
+        ttlField = new JTextField();
+        ttlField.setBounds(150, 50, 200, 25);
+        add(ttlField);
+
+        JLabel noDaftarLabel = new JLabel("Nomor Pendaftaran");
+        noDaftarLabel.setBounds(20, 80, 120, 25);
+        add(noDaftarLabel);
+
+        noDaftarField = new JTextField();
+        noDaftarField.setBounds(150, 80, 200, 25);
+        add(noDaftarField);
+
+        JLabel noTelpLabel = new JLabel("No. Telp");
+        noTelpLabel.setBounds(20, 110, 120, 25);
+        add(noTelpLabel);
+
+        noTelpField = new JTextField();
+        noTelpField.setBounds(150, 110, 200, 25);
+        add(noTelpField);
+
+        JLabel alamatLabel = new JLabel("Alamat");
+        alamatLabel.setBounds(20, 140, 120, 25);
+        add(alamatLabel);
+
+        alamatArea = new JTextArea();
+        alamatArea.setBounds(150, 140, 200, 50);
+        add(alamatArea);
+
+        JLabel emailLabel = new JLabel("E-mail");
+        emailLabel.setBounds(20, 200, 120, 25);
+        add(emailLabel);
+
+        emailField = new JTextField();
+        emailField.setBounds(150, 200, 200, 25);
+        add(emailField);
+
+        submitButton = new JButton("submit");
+        submitButton.setBounds(150, 240, 100, 30);
+        submitButton.setBackground(new Color(204, 102, 255));
+        submitButton.setForeground(Color.WHITE);
+        add(submitButton);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tampilkanData();
+            }
+        });
+
+        setVisible(true);
+    }
+
+    private void tampilkanData() {
+        JFrame outputFrame = new JFrame("Data Mahasiswa");
+        outputFrame.setSize(400, 300);
+        outputFrame.setLocationRelativeTo(null);
+        outputFrame.getContentPane().setBackground(new Color(230, 204, 255));
+
+        JTextArea outputArea = new JTextArea();
+        outputArea.setEditable(false);
+        outputArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        outputArea.setText(
+                "Nama\t\t: " + namaField.getText() +
+                "\nTanggal Lahir\t: " + ttlField.getText() +
+                "\nNo.Pendaftaran\t: " + noDaftarField.getText() +
+                "\nNo.Telp\t\t: " + noTelpField.getText() +
+                "\nAlamat\t\t: " + alamatArea.getText() +
+                "\nE-mail\t\t: " + emailField.getText()
+        );
+
+        outputFrame.add(outputArea);
+        outputFrame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new FormMahasiswa();
+    }
+}
+
